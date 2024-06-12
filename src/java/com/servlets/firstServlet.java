@@ -10,6 +10,7 @@ import javax.servlet.GenericServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Cookie;
 
 /**
  *
@@ -99,13 +100,20 @@ public class firstServlet extends HttpServlet{
         
         
         //public void forward(ServletRequest request, ServletResponse response) throws ServletException, IOException;
-        if(fname.equals("ishan"))
-        {
-            String fullName = fname+lname;
-            req.setAttribute("name",fullName);
-            RequestDispatcher rd = req.getRequestDispatcher("/secondServlet");
-            rd.forward(req, resp);
-        }
+//        if(fname.equals("ishan"))
+//        {
+//            String fullName = fname+lname;
+//            req.setAttribute("name",fullName);
+//            RequestDispatcher rd = req.getRequestDispatcher("/secondServlet");
+//            rd.forward(req, resp);
+//        }
+        
+        
+//        Http protocal is stateless protocol and this handled by session in servlet
+          Cookie cookie = new Cookie("User_name",fname);
+          resp.addCookie(cookie);
+          
+          out.println("<h1><a href='secondServlet'>secondServlet</a></h1>");
 
         // Close the PrintWriter
         out.close();

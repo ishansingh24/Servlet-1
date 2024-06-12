@@ -7,6 +7,7 @@ package com.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,19 +31,52 @@ public class secondServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         //getting attributes
-        String FullName = (String) request.getAttribute("name");
+//        String FullName = (String) request.getAttribute("name");
+
+        Cookie []cookies = request.getCookies();
+        boolean value = false;
+        String fname = "rahul";
+        
+        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet secondServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet secondServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h1>fullName : "+FullName+"</h1>");
-            out.println("</body>");
-            out.println("</html>");
+//            out.println("<!DOCTYPE html>");
+//            out.println("<html>");
+//            out.println("<head>");
+//            out.println("<title>Servlet secondServlet</title>");            
+//            out.println("</head>");
+//            out.println("<body>");
+//            out.println("<h1>Servlet secondServlet at " + request.getContextPath() + "</h1>");
+//            out.println("<h1>fullName : "+request.getParameter("firstName")+"</h1>");
+//            out.println("</body>");
+//            out.println("</html>");
+
+              if(cookies == null)
+              {
+                out.println("<h1>you are new user go to home page</h1>");
+                return;
+              }
+              else
+              {
+                  for(Cookie C : cookies)
+                  {
+                      String Name = C.getName();
+                      if(Name.equals("user_name"));
+                      {
+                         value = true; 
+                         fname = C.getValue();
+                         System.out.println(fname);
+                      }                   
+                  }
+                  
+                  if(value == true)
+                  {
+                      out.println("<h1>fullName :"+fname+"</h1>");
+                  }
+                  else{
+                      out.println("<h1>you are new user go to home page</h1>");
+                  }
+              }
         }
     }
 
