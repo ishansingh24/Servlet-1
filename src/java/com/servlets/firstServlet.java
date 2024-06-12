@@ -97,11 +97,14 @@ public class firstServlet extends HttpServlet{
         out.println("</body>");
         out.println("</html>");
         
-        RequestDispatcher rd = req.getRequestDispatcher("/secondServlet");
+        
         //public void forward(ServletRequest request, ServletResponse response) throws ServletException, IOException;
         if(fname.equals("ishan"))
         {
-           rd.forward(req, resp);
+            String fullName = fname+lname;
+            req.setAttribute("name",fullName);
+            RequestDispatcher rd = req.getRequestDispatcher("/secondServlet");
+            rd.forward(req, resp);
         }
 
         // Close the PrintWriter

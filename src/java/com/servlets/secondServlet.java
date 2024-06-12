@@ -29,6 +29,8 @@ public class secondServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        //getting attributes
+        String FullName = (String) request.getAttribute("name");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -38,6 +40,7 @@ public class secondServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet secondServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>fullName : "+FullName+"</h1>");
             out.println("</body>");
             out.println("</html>");
         }
