@@ -6,24 +6,25 @@ package com.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.*;
+import javax.servlet.GenericServlet;
 
 /**
  *
  * @author gauta
  */
-public class firstServlet implements Servlet{
+public class firstServlet extends GenericServlet{
 
-    private ServletConfig conf;
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        this.conf = config;
-        System.out.println("creating object");
-    }
+//    private ServletConfig conf;
+//    @Override
+//    public void init(ServletConfig config) throws ServletException {
+//        this.conf = config;
+//        System.out.println("creating object");
+//    }
 
-    @Override
-    public ServletConfig getServletConfig() {
-        return conf;
-    }
+//    @Override
+//    public ServletConfig getServletConfig() {
+//        return conf;
+//    }
 
     @Override
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
@@ -53,14 +54,14 @@ public class firstServlet implements Servlet{
         out.close();
     }
 
-    @Override
-    public String getServletInfo() {
-        return "this is created by ishan";
-    }
-
-    @Override
-    public void destroy() {
-        System.out.println("object destroyed");
-    }
+//    @Override
+//    public String getServletInfo() {
+//        return "this is created by ishan";
+//    }
+//
+//    @Override
+//    public void destroy() {
+//        System.out.println("object destroyed");
+//    }
     
 }
