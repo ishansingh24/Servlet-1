@@ -96,6 +96,13 @@ public class firstServlet extends HttpServlet{
         out.println("<h1>Email    : " + email + "</h1>");
         out.println("</body>");
         out.println("</html>");
+        
+        RequestDispatcher rd = req.getRequestDispatcher("/secondServlet");
+        //public void forward(ServletRequest request, ServletResponse response) throws ServletException, IOException;
+        if(fname.equals("ishan"))
+        {
+           rd.forward(req, resp);
+        }
 
         // Close the PrintWriter
         out.close();
